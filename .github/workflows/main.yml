@@ -1,1 +1,32 @@
+name: Compare Excel Files
 
+on:
+  push:
+    paths:
+      - '**.xlsx'
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Needed to access previous commit
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pandas openpyxl
+
+      - name: Compare Excel files
+        run: |
+          git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
+            cp "$file" "new_version.xlsx"
+            git checkout HEAD^ -- "$file"
+            cp "$file" "old_version.xlsx"
+            python compare_excel.py
+          done
