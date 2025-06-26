@@ -19,8 +19,8 @@ def compare_excels(old_file, new_file):
 
     return comparison_result
 
-if os.path.exists('old_version.xlsx') and os.path.exists('new_version.xlsx'):
-    differences = compare_excels('old_version.xlsx', 'new_version.xlsx')
+if os.path.exists('old_data.xlsx') and os.path.exists('new_data.xlsx'):
+    differences = compare_excels('old_data.xlsx', 'new_data.xlsx')
     with open('excel_diff_report.txt', 'w') as report:
         for line in differences:
             report.write(line + '\n')
