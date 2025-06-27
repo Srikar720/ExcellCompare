@@ -3,7 +3,7 @@ name: Compare Excel Files
 on:
   push:
     paths:
-      - '.github/workflows/*.xlsx'
+      - 'DATA/**/*.xlsx'
 
 jobs:
   compare:
@@ -25,8 +25,8 @@ jobs:
       - name: Compare Excel files
         run: |
           git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
-            cp "$file" ".github/workflows/new_data.xlsx"
+            cp "$file" "'data/**/*.xlsx'"
             git checkout HEAD^ -- "$file"
-            cp "$file" ".github/workflows/old_data.xlsx"
+            cp "$file" "'data/**/*.xlsx'"
             python compare_excel.py
           done
