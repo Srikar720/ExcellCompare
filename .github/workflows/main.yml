@@ -6,6 +6,11 @@ on:
       - main  
     paths:
       - '**/*.xlsx'
+  create:
+    branches:
+      - main  
+    paths:
+      - '**/*.xlsx'
 
 jobs:
   compare:
