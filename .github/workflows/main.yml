@@ -3,7 +3,7 @@ name: Compare Excel Files
 on:
   push:
     paths:
-      - 'DATA/**/*.xlsx'
+      - 'DATA/*.xlsx'
 
 jobs:
   compare:
