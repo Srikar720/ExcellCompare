@@ -26,8 +26,17 @@ jobs:
       - name: Compare Excel files
         run: |
           git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
-            cp "$file" "'**/newfile.xlsx'"
-            git checkout HEAD^ -- "$file"
-            cp "$file" "'**/oldfile.xlsx'"
-            python compare_excel.py
+          # Save the new version
+          cp "$file" "newfile.xlsx"
+
+          # Save the old version from the previous commit
+          git checkout HEAD^ -- "$file"
+          cp "$file" "oldfile.xlsx"
+
+          # Run the comparison
+          python compare_excel.py
+
+          # Restore the new version (optional)
+          git checkout HEAD -- "$file"
           done
+
