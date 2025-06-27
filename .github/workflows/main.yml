@@ -3,7 +3,7 @@ name: Compare Excel Files
 on:
   push:
     paths:
-      - '.github/workflows/new_data.xlsx'
+      - '.github/workflows/*.xlsx'
 
 jobs:
   compare:
