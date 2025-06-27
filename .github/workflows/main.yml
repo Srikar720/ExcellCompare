@@ -27,11 +27,11 @@ jobs:
         run: |
           git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
           # Save the new version
-          cp "$file" ".github/data/newfile1.xlsx"
+          cp "$file" ".**/*.xlsx"
 
           # Save the old version from the previous commit
           git checkout HEAD^ -- "$file"
-          cp "$file" ".github/data/oldfile1.xlsx"
+          cp "$file" ".**/*.xlsx"
 
           # Run the comparison
           python compare_excel.py
