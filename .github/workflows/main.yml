@@ -1,10 +1,9 @@
-name: Compare Excel Files
+name: Compare Excel Files by Date
 
 on:
-  push: 
+  push:
     paths:
-      - '**/*.xlsx'
-
+      - 'excel_files/**/*.xlsx'
 
 jobs:
   compare:
@@ -13,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2 
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,20 +22,5 @@ jobs:
       - name: Install dependencies
         run: pip install pandas openpyxl
 
-      - name: Compare Excel files
-        run: |
-          git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
-          # Save the new version
-          cp "$file" ".**/*.xlsx"
-
-          # Save the old version from the previous commit
-          git checkout HEAD^ -- "$file"
-          cp "$file" ".**/*.xlsx"
-
-          # Run the comparison
-          python compare_excel.py
-
-          # Restore the new version (optional)
-          git checkout HEAD -- "$file"
-          done
-
+      - name: Run Excel comparison
+        run: python compare_excel.py
