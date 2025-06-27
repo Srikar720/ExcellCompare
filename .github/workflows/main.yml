@@ -26,8 +26,8 @@ jobs:
       - name: Compare Excel files
         run: |
           git diff --name-only HEAD^ HEAD | grep '.xlsx' | while read file; do
-            cp "$file" "'**/newfile.xlsx'"
+            cp "$file" "Srikar720/ExcellCompare/.github/data/newfile.xlsx"
             git checkout HEAD^ -- "$file"
-            cp "$file" "'**/*.xlsx'"
+            cp "$file" "'.github/**/*.xlsx'"
             python compare_excel.py
           done
