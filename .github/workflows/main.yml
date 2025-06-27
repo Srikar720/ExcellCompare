@@ -1,9 +1,7 @@
 name: Compare Excel Files
 
 on:
-  push:
-    branches:
-      - main  
+  push: 
     paths:
       - '**/*.xlsx'
 
