@@ -8,7 +8,7 @@ PROD_RTCA NOT 200	svc-credit-assessment query result is > 1.0 on 'PROD_RTCA NOT 
 Heap memory usage (High)	Heap memory usage > 80% for at least 5 minutes on 'fpds-queue (fpds-queue-5b8964dd49-nlbvh)'	warning	37
 PROD_SUBSCRIPTION !=200 && != 404	svc-assets-orders query result is = 1.0 on 'PROD_SUBSCRIPTION !=200 && != 404'	warning	32
 PROD_CUSTOMERAPI != 200	svc-credit-assessment query result is = 1.0 on 'PROD_CUSTOMERAPI != 200'	warning	20
-PROD_LOOKUP NOT 200	svc-credit-assessment query result is > 1.0 on 'PROD_LOOKUP NOT 200'	warning	20
+PROD_LOOKUP NOT 200	svc-credit-assessment query result is > 1.0 on 'PROD_LOOKUP NOT 200'	warning	20...
 RTCA Sporadic Failures	svc-credit-assessment query result is > 1.0 for 1 minutes on 'RTCA Sporadic Failures'	critical	18
 PROD_CUSTOMERAPI != 200	svc-customer-risk-status query result is = 1.0 on 'PROD_CUSTOMERAPI != 200'	warning	17
 Heap memory usage (High)	Heap memory usage > 80% for at least 5 minutes on 'fpds-queue (fpds-queue-5b8964dd49-8gkw9)'	warning	10
