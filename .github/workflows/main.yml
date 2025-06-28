@@ -31,9 +31,3 @@ jobs:
 
       - name: Show comparison result
         run: cat comparison_output.txt
-
-      - name: Upload comparison result
-        uses: actions/upload-artifact@v3
-        with:
-          name: comparison-output
-          path: comparison_output.txt
