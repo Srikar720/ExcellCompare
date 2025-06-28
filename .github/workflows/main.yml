@@ -1,4 +1,4 @@
-name: Compare Excel Files
+name: Compare Excel Files by Date
 
 on:
   push:
@@ -8,10 +8,11 @@ on:
 jobs:
   compare:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -21,13 +22,5 @@ jobs:
       - name: Install dependencies
         run: pip install pandas openpyxl
 
-      - name: List files for debugging
-        run: ls -R
-
       - name: Run Excel comparison
-        run: |
-          echo "Running comparison script..."
-          python compare_excel.py
-
-      - name: Show comparison result
-        run: cat comparison_output.txt
+        run: python compare_excel.py
