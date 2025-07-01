@@ -4,10 +4,6 @@ on:
   push:
     paths:
       - 'excel_files/**/*.xlsx'
-  pull_request:
-    paths:
-      - 'excel_files/**/*.xlsx'
-
 jobs:
   compare:
     runs-on: ubuntu-latest
