@@ -2,8 +2,8 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
 from tabulate import tabulate
 
-file_old = '"C:\Users\2297942\Downloads\Telstra Acquisitons - Decision Harvesting Workbook V1.7.0.xlsx"'
-file_new = '"C:\Users\2297942\Downloads\Telstra Acquisitons - Decision Harvesting Workbook V1.8.0.xlsx"'
+file_old = '"C:/Users/2297942/Downloads/Telstra Acquisitons - Decision Harvesting Workbook V1.7.0.xlsx"'
+file_new = '"C:/Users/2297942/Downloads/Telstra Acquisitons - Decision Harvesting Workbook V1.8.0.xlsx"'
 output_file = 'highlighted_all_sheets.xlsx'
 
 print(f" Old File is '{file_old}'.")
