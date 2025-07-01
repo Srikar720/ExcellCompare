@@ -3,7 +3,7 @@ from openpyxl.styles import PatternFill, Font
 from tabulate import tabulate
 
 file_old = "excel_files/Telstra Acquisitons - Decision Harvesting Workbook V1.7.0.xlsx"
-file_new = "excel_files/Telstra Acquisitons - Decision Harvesting Workbook V1.9.0.xlsx"
+file_new = "excel_files/Telstra Acquisitons - Decision Harvesting Workbook V1.8.0.xlsx"
 output_file = 'highlighted_all_sheets.xlsx'
 
 print(f" Old File is '{file_old}'.")
