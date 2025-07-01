@@ -1,50 +1,65 @@
-import os
-import pandas as pd
-import re
-from datetime import datetime
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font
+from tabulate import tabulate
 
-# Folder with Excel files
-folder = 'excel_files'
-output_file = 'comparison_output.txt'
+file_old = '"C:\Users\2297942\Downloads\Telstra Acquisitons - Decision Harvesting Workbook V1.7.0.xlsx"'
+file_new = '"C:\Users\2297942\Downloads\Telstra Acquisitons - Decision Harvesting Workbook V1.8.0.xlsx"'
+output_file = 'highlighted_all_sheets.xlsx'
 
-# Get all Excel files with date in filename
-files = []
-for f in os.listdir(folder):
-    match = re.search(r'_(\d{8})\.xlsx$', f)
-    if match:
-        date = datetime.strptime(match.group(1), '%Y%m%d')
-        files.append((f, date))
+print(f" Old File is '{file_old}'.")
+print(f" New File is '{file_new}'.")
 
-# Sort files by date
-files.sort(key=lambda x: x[1])
+# Load both workbooks
+wb_old = load_workbook(file_old)
+wb_new = load_workbook(file_new)
 
-# Only compare if we have at least two files
-if len(files) >= 2:
-    old_file = os.path.join(folder, files[-2][0])
-    new_file = os.path.join(folder, files[-1][0])
+print(" Loaded workbooks.")
 
-    old_excel = pd.ExcelFile(old_file, engine='openpyxl')
-    new_excel = pd.ExcelFile(new_file, engine='openpyxl')
+# Create a fill style for highlighting
+highlight = PatternFill(start_color='FF0000', end_color='FF0000', fill_type='lightDown')
+bold_font = Font(bold=True,color='FFFFFF')
 
-    with open(output_file, 'w') as out:
-        out.write(f"Comparing {files[-2][0]} with {files[-1][0]}\n")
-        changes_found = False
+# Track changes for summary
+summary_data = []
 
-        for sheet in old_excel.sheet_names:
-            if sheet in new_excel.sheet_names:
-                df_old = old_excel.parse(sheet)
-                df_new = new_excel.parse(sheet)
+print(" Processing Sheets in workbooks.")
 
-                for i in range(max(len(df_old), len(df_new))):
-                    for j in range(max(len(df_old.columns), len(df_new.columns))):
-                        val_old = df_old.iloc[i, j] if i < len(df_old) and j < len(df_old.columns) else None
-                        val_new = df_new.iloc[i, j] if i < len(df_new) and j < len(df_new.columns) else None
-                        if val_old != val_new:
-                            out.write(f"Sheet '{sheet}' Cell ({i+1},{j+1}): '{val_old}' -> '{val_new}'\n")
-                            changes_found = True
+for sheet_name in wb_old.sheetnames:
+    if sheet_name not in wb_new.sheetnames:
+        summary_data.append((sheet_name, 'Missing in new file'))
+        continue
 
-        if not changes_found:
-            out.write("No changes detected.\n")
-else:
-    with open(output_file, 'w') as out:
-        out.write("Not enough files to compare.\n")
+    ws_old = wb_old[sheet_name]
+    ws_new = wb_new[sheet_name]
+
+    max_row = max(ws_old.max_row, ws_new.max_row)
+    max_col = max(ws_old.max_column, ws_new.max_column)
+
+    changes = 0
+    for row in range(1, max_row + 1):
+        for col in range(1, max_col + 1):
+            val_old = ws_old.cell(row=row, column=col).value
+            val_new = ws_new.cell(row=row, column=col).value
+            if val_old != val_new:
+                ws_new.cell(row=row, column=col).fill = highlight
+                ws_new.cell(row=row, column=col).font = bold_font
+                changes += 1
+
+    if changes:
+        summary_data.append((sheet_name, f"{changes} changes"))
+    else:
+        summary_data.append((sheet_name, "No changes"))
+
+# Add summary sheet
+ws_summary = wb_new.create_sheet("Summary_of_Changes")
+ws_summary.append(["Sheet Name", "Change Summary"])
+for entry in summary_data:
+    ws_summary.append(entry)
+
+# Print summary table in console
+print(" Summary of Changes: ****************")
+print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt="grid"))
+
+# Save output
+wb_new.save(output_file)
+print(f" Done! Differences highlighted and summary added in '{output_file}'.")
