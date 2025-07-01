@@ -20,7 +20,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install pandas openpyxl
-
+        run: pip install pandas openpyxl tabulate
+        
       - name: Run Excel comparison
         run: python compare_excel.py
