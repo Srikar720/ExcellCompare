@@ -1,0 +1,76 @@
+Condition Name,Title,Priority,CountofAlertPast7days
+daily-healthcheck-RTFA,svc-fraud-assessment query result is <= 2.0 on 'daily-healthcheck-RTFA',warning,284
+daily-healthcheck-RTCA,svc-credit-assessment query result is <= 4.0 on 'daily-healthcheck-RTCA',warning,275
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'fpds-queue (fpds-queue-5b8964dd49-54d2s)',warning,77
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'fpds-queue (fpds-queue-5b8964dd49-dp52f)',warning,75
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'fpds-queue (fpds-queue-5b8964dd49-2j5c7)',warning,65
+PROD_RTCA NOT 200,svc-credit-assessment query result is > 1.0 on 'PROD_RTCA NOT 200',warning,58
+PROD_SUBSCRIPTION !=200 && != 404,svc-assets-orders query result is = 1.0 on 'PROD_SUBSCRIPTION !=200 && != 404',warning,36
+PROD_LOOKUP NOT 200,svc-credit-assessment query result is > 1.0 on 'PROD_LOOKUP NOT 200',warning,22
+RTCA Sporadic Failures,svc-credit-assessment query result is > 1.0 for 1 minutes on 'RTCA Sporadic Failures',critical,22
+Illion!=200,svc-credit-assessment query result is = 1.0 on 'Illion!=200',warning,18
+PROD_CUSTOMERAPI != 200,svc-credit-assessment query result is = 1.0 on 'PROD_CUSTOMERAPI != 200',warning,17
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-qfc59)',warning,13
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-9tqw2)',warning,12
+Heap memory usage (High),Heap memory usage > 80% for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-ggvwd)',warning,12
+OrderList != 200 && != 404,ExternalApiEvent query result is > 5.0 on 'OrderList != 200 && != 404',critical,10
+SQS - Number of Visible Messages increased,Provider . Approximate Age Of Oldest Message . Average > 50.0 for at least 10 minutes on 'rtfa-kount-score-dlq-prod',critical,9
+daily-healthcheck-RTCA,svc-credit-assessment query result is > 5.0 on 'daily-healthcheck-RTCA',critical,9
+PROD_CUSTOMERAPI != 200,svc-customer-risk-status query result is = 1.0 on 'PROD_CUSTOMERAPI != 200',warning,8
+Service Levels default alert condition,svc-credit-assessment - Success query result is < 25.0 on 'Service Levels default alert condition',warning,6
+Service Levels default alert condition,svc-credit-assessment - Success query result is <= 0.0 on 'Service Levels default alert condition',critical,6
+PROD_CUSTOMERAPI != 200,svc-assets-orders query result is = 1.0 on 'PROD_CUSTOMERAPI != 200',warning,5
+Illion!=200,svc-credit-assessment query result is > 1.0 on 'Illion!=200',critical,4
+PROD RTFA - RTCA != 200 & 404,svc-fraud-assessment query result is > 0.0 on 'PROD RTFA - RTCA != 200 & 404',warning,4
+Web transaction time (Baseline),Web response time > 4.89779 for at least 5 minutes on 'svc-rtca-history',warning,4
+daily-healthcheck-RTFA,svc-fraud-assessment query result is > 2.0 on 'daily-healthcheck-RTFA',critical,4
+test_alert_condition_1,svc-credit-assessment query result is > 0.0 for 1 minutes on 'test_alert_condition_1',warning,4
+BillingServices and statusCode =500,svc-customer-risk-status query result is > 1.0 on 'BillingServices and statusCode =500',warning,3
+Instances Response time (web) (High),Web response time > 7.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-9ltgc)',warning,3
+Instances Response time (web) (High),Web response time > 7.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-dp9r2)',warning,3
+Instances Response time (web) (High),Web response time > 7.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-rt4dd)',warning,3
+Instances Response time (web) (High),Web response time > 8.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-9ltgc)',critical,3
+Instances Response time (web) (High),Web response time > 8.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-dp9r2)',critical,3
+PROD RTFA - RTCA != 200 & 404,svc-fraud-assessment query result is > 5.0 on 'PROD RTFA - RTCA != 200 & 404',critical,3
+Transaction database time (Baseline),Datastore/all/average_response_time > 10.5 for at least 5 minutes on 'svc-rtca-history',warning,3
+Web transaction database time (Baseline),Datastore/allWeb/average_response_time > 10.5 for at least 5 minutes on 'svc-rtca-history',warning,3
+Web transaction time (Baseline),Web response time > 10.5 for at least 5 minutes on 'svc-fraud-assessment',warning,3
+Instances Error percentage (High),Error percentage > 10% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-9ltgc)',critical,2
+Instances Error percentage (High),Error percentage > 10% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-dp9r2)',critical,2
+Instances Error percentage (High),Error percentage > 10% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-rt4dd)',critical,2
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-9ltgc)',warning,2
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-b4sf4)',warning,2
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-dp9r2)',warning,2
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-rt4dd)',warning,2
+Instances Response time (web) (High),Web response time > 7.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-b4sf4)',warning,2
+Instances Response time (web) (High),Web response time > 8.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-b4sf4)',critical,2
+Instances Response time (web) (High),Web response time > 8.0 for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-rt4dd)',critical,2
+PROD_AGGREGATEDCOMMITMENT NOT 200,svc-assets-orders query result is > 1.0 on 'PROD_AGGREGATEDCOMMITMENT NOT 200',warning,2
+PROD_DOWNSTREAM > 10000ms,svc-credit-assessment query result is > 3.0 on 'PROD_DOWNSTREAM > 10000ms',warning,2
+Receipt List api != 200 && != 404,svc-customer-risk-status query result is = 1.0 on 'Receipt List api != 200 && != 404',warning,2
+SQS - Number of Visible Messages increased,Provider . Approximate Age Of Oldest Message . Average > 50.0 for at least 10 minutes on 'rtca-ca-history-queue-prod',critical,2
+Transaction database time (Baseline),Datastore/all/average_response_time > 10.5 for at least 10 minutes on 'svc-rtca-history',critical,2
+Web transaction database time (Baseline),Datastore/allWeb/average_response_time > 10.5 for at least 10 minutes on 'svc-rtca-history',critical,2
+Web transaction time (Baseline),Web response time > 10.5 for at least 10 minutes on 'svc-fraud-assessment',critical,2
+Web transaction time (Baseline),Web response time > 22.38721 for at least 10 minutes on 'svc-rtca-history',critical,2
+CustomerProducts giving Partial Response with status Code 206,ExternalApiEvent query result is > 1.0 on 'CustomerProducts giving Partial Response with status Code 206',warning,1
+CustomerProducts giving Partial Response with status Code 206,ExternalApiEvent query result is > 2.0 on 'CustomerProducts giving Partial Response with status Code 206',critical,1
+FICO !=200,svc-credit-assessment query result is > 1.0 on 'FICO !=200',warning,1
+Instances Apdex (Low),Apdex < 0.4 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-9tqw2)',warning,1
+Instances Apdex (Low),Apdex < 0.4 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-ggvwd)',warning,1
+Instances Error percentage (High),Error percentage > 10% for at least 5 minutes on 'svc-credit-assessment (svc-credit-assessment-7c6cbcdcdf-ghxjm)',critical,1
+Instances Error percentage (High),Error percentage > 10% for at least 5 minutes on 'svc-rtca-history (svc-rtca-history-5c96d469bb-b4sf4)',critical,1
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-credit-assessment (svc-credit-assessment-7c6cbcdcdf-ghxjm)',warning,1
+Instances Error percentage (High),Error percentage > 5% for at least 5 minutes on 'svc-customer-risk-status (svc-customer-risk-status-66b4cc78f9-sv6m4)',warning,1
+Instances Response time (web) (High),Web response time > 3.5 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-ggvwd)',warning,1
+Instances Response time (web) (High),Web response time > 3.5 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-qfc59)',warning,1
+Instances Response time (web) (High),Web response time > 4.0 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-ggvwd)',critical,1
+Instances Response time (web) (High),Web response time > 4.0 for at least 5 minutes on 'svc-fraud-assessment (svc-fraud-assessment-7f5559f9d6-qfc59)',critical,1
+PROD RTFA Booking !=200 & !=404,svc-fraud-assessment query result is > 0.0 on 'PROD RTFA Booking !=200 & !=404',warning,1
+PROD_COLLECTIONS != 200 && != 404,svc-customer-risk-status query result is = 1.0 on 'PROD_COLLECTIONS != 200 && != 404',warning,1
+PROD_CUSTOMERRISK NOT 200,svc-customer-risk-status query result is > 10.0 on 'PROD_CUSTOMERRISK NOT 200',critical,1
+PROD_DOWNSTREAM > 10000ms,ExternalApiEvent query result is > 3.0 on 'PROD_DOWNSTREAM > 10000ms',warning,1
+PROD_DOWNSTREAM > 10000ms,svc-assets-orders query result is > 3.0 on 'PROD_DOWNSTREAM > 10000ms',warning,1
+PROD_LOOKUP NOT 200,svc-credit-assessment query result is > 2.0 on 'PROD_LOOKUP NOT 200',critical,1
+RTCA/RTFA_Lambda_default alert policy,RTCA/RTFA_Lambda_default alert policy,warning,1
+Web transaction time (Baseline),Web response time > 4.89779 for at least 5 minutes on 'svc-assets-orders',warning,1
