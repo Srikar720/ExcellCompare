@@ -23,9 +23,4 @@ jobs:
         
       - name: Run Excel comparison
         run: python Excell_Compare1.py
-
-      - name: Upload comparison result
-        uses: actions/upload-artifact@v4
-        with:
-          name: highlighted_diff
-          path: hightlighted_all_sheets_*.xlsx
+      
