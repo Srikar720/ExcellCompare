@@ -32,7 +32,7 @@ if len(excel_files) < 2:
 # Select the two most recent files
 file_old = os.path.join(excel_dir, excel_files[-2])
 file_new = os.path.join(excel_dir, excel_files[-1])
-output_file = os.path.join(excel_dir, 'highlighted_all_sheets.xlsx')
+output_file = 'highlighted_all_sheets.xlsx'
 
 print(f"Old File: '{file_old}'")
 print(f"New File: '{file_new}'")
