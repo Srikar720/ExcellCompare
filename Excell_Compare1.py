@@ -88,4 +88,4 @@ print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt=
 
 # Save output
 wb_new.save(output_file)
-print(f"Differences highlighted and summary saved to '{os.path.abspath(output_file)}'")
+print(f"Differences highlighted and summary saved to '{(output_file)}'")
