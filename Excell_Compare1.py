@@ -5,47 +5,46 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
 from tabulate import tabulate
  
-# Directory containing Excel files
+# Input Excel directory
 excel_dir = "excel_files"
  
-# Ensure the directory exists
+# Create Excel folder if missing
 if not os.path.exists(excel_dir):
     os.makedirs(excel_dir)
     print(f"Directory '{excel_dir}' created. Please add Excel files and rerun the script.")
     exit()
  
-# Extract version number from filename
+# Version parser from filename
 def extract_version(filename):
     match = re.search(r'V(\d+)\.(\d+)\.(\d+)', filename)
     if match:
         return tuple(map(int, match.groups()))
     return (0, 0, 0)
  
-# List and sort Excel files by version
+# List Excel files
 excel_files = [f for f in os.listdir(excel_dir) if f.endswith('.xlsx')]
 excel_files.sort(key=extract_version)
  
-# Ensure at least two files are available
 if len(excel_files) < 2:
     print("Not enough versioned Excel files found in the directory.")
     exit()
  
-# Select the two most recent files
+# Pick latest and previous
 file_old = os.path.join(excel_dir, excel_files[-2])
 file_new = os.path.join(excel_dir, excel_files[-1])
  
-# ✅ Create output directory if it doesn't exist
+# Create output folder
 output_dir = "Output"
 os.makedirs(output_dir, exist_ok=True)
  
-# ✅ Save with timestamp so artifact doesn't get overwritten
+# Save to file with timestamp
 timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
 output_file = os.path.join(output_dir, f"difference_{timestamp}.xlsx")
  
 print(f"Old File: '{file_old}'")
 print(f"New File: '{file_new}'")
  
-# Load workbooks
+# Load Excel files
 wb_old = load_workbook(file_old)
 wb_new = load_workbook(file_new)
  
@@ -53,9 +52,8 @@ wb_new = load_workbook(file_new)
 highlight = PatternFill(start_color='FF0000', end_color='FF0000', fill_type='lightDown')
 bold_font = Font(bold=True, color='FFFFFF')
  
-# Track changes summary
+# Track changes
 summary_data = []
- 
 print("Processing sheets...")
  
 for sheet_name in wb_old.sheetnames:
@@ -78,22 +76,18 @@ for sheet_name in wb_old.sheetnames:
                 ws_new.cell(row=row, column=col).font = bold_font
                 changes += 1
  
-    if changes:
-        summary_data.append((sheet_name, f"{changes} changes"))
-    else:
-        summary_data.append((sheet_name, "No changes"))
+    summary_data.append((sheet_name, f"{changes} changes" if changes else "No changes"))
  
-# Add summary sheet
+# Summary sheet
 ws_summary = wb_new.create_sheet("Summary_of_Changes")
 ws_summary.append(["Sheet Name", "Change Summary"])
 for entry in summary_data:
     ws_summary.append(entry)
  
-# Print summary
+# Print & Save
 print("Summary of Changes:")
 print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt="grid"))
  
-#  Save output file
 wb_new.save(output_file)
 print(f"Saving output file to: {output_file}")
 print("File saved successfully.")
