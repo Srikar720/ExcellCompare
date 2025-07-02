@@ -94,7 +94,7 @@ print("Summary of Changes:")
 print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt="grid"))
  
 #  Save output file
-print(f"Saving output file to: {output_file}")
 wb_new.save(output_file)
+print(f"Saving output file to: {output_file}")
 print("File saved successfully.")
  
