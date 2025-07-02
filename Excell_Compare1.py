@@ -7,6 +7,7 @@ from tabulate import tabulate
 
 # Directory containing Excel files
 excel_dir = "excel_files"
+output_dir = "Output"
 
 # Ensure the directory exists
 if not os.path.exists(excel_dir):
@@ -90,4 +91,4 @@ print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt=
 
 # Save output
 wb_new.save(output_file)
-print(f"Differences highlighted and summary saved to '{output_file}'")
+print(f"Differences highlighted and summary saved to:'{ output_file}'")
