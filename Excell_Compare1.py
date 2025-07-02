@@ -35,12 +35,12 @@ file_old = os.path.join(excel_dir, excel_files[-2])
 file_new = os.path.join(excel_dir, excel_files[-1])
  
 # ✅ Create output directory if it doesn't exist
-output_dir = "output"
+output_dir = "Output"
 os.makedirs(output_dir, exist_ok=True)
  
 # ✅ Save with timestamp so artifact doesn't get overwritten
 timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
-output_file = os.path.join(output_dir, f"highlighted_all_sheets_{timestamp}.xlsx")
+output_file = os.path.join(output_dir, f"difference_{timestamp}.xlsx")
  
 print(f"Old File: '{file_old}'")
 print(f"New File: '{file_new}'")
