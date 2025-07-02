@@ -1,5 +1,6 @@
 import os
 import re
+from datetime import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
 from tabulate import tabulate
@@ -32,10 +33,11 @@ if len(excel_files) < 2:
 # Select the two most recent files
 file_old = os.path.join(excel_dir, excel_files[-2])
 file_new = os.path.join(excel_dir, excel_files[-1])
-output_file = 'highlighted_all_sheets.xlsx'
+output_file = os.path.join(repo_root,f'highlighted_diff_{timestamp}.xlsx')
 
 print(f"Old File: '{file_old}'")
 print(f"New File: '{file_new}'")
+print(f"Outout File: '{output_file}'")
 
 # Load workbooks
 wb_old = load_workbook(file_old)
@@ -88,4 +90,4 @@ print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt=
 
 # Save output
 wb_new.save(output_file)
-print(f"Differences highlighted and summary saved to '{(output_file)}'")
+print(f"Differences highlighted and summary saved to '{output_file}'")
