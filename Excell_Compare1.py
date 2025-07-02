@@ -34,11 +34,13 @@ if len(excel_files) < 2:
 # Select the two most recent files
 file_old = os.path.join(excel_dir, excel_files[-2])
 file_new = os.path.join(excel_dir, excel_files[-1])
-output_file = os.path.join(repo_root,f'highlighted_diff_{timestamp}.xlsx')
+#Create output file name with timestamp
+timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+output_file = os.path.join(output_dir, f"highlighted_diff_{timestamp}.xlsx")
 
 print(f"Old File: '{file_old}'")
 print(f"New File: '{file_new}'")
-print(f"Outout File: '{output_file}'")
+print(f"Output File: '{output_file}'")
 
 # Load workbooks
 wb_old = load_workbook(file_old)
@@ -91,4 +93,4 @@ print(tabulate(summary_data, headers=["Sheet Name", "Change Summary"], tablefmt=
 
 # Save output
 wb_new.save(output_file)
-print(f"Differences highlighted and summary saved to:'{ output_file}'")
+print(f"Differences highlighted and summary saved to:'{output_file}'")
